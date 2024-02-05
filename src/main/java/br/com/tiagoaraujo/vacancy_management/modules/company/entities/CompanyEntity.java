@@ -1,4 +1,4 @@
-package br.com.tiagoaraujo.vacancy_management.modules.candidate;
+package br.com.tiagoaraujo.vacancy_management.modules.company.entities;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -15,28 +15,28 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
+@Entity(name = "company")
 @Data
-@Entity(name = "candidate")
-public class CandidateEntity {
+public class CompanyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
-    private String name;
 
     @NotBlank
     @Pattern(regexp = "\\S+", message = "field [username] should not contain empty spaces.")
     private String username;
 
-    @Length(min = 4, max = 16, message = "field [password] should contain between 4 and 16 characters.")
-    private String password;
-
     @Email(message = "field [email] should contain a valid email.")
     private String email;
 
-    private String description;
+    @Length(min = 4, max = 16, message = "field [password] should contain between 4 and 16 characters.")
+    private String password;
 
-    private String curriculum;
+    private String website;
+
+    private String name;
+
+    private String description;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
